@@ -1,6 +1,5 @@
-
+import { Link } from 'react-router-dom'
 import React from 'react'
-import User from './user'
 
 class Dummy extends React.Component {
     constructor(props) {
@@ -9,28 +8,24 @@ class Dummy extends React.Component {
         isLoggedIn: false
     }
 }
+
 render() {
-   if (!this.state.isLoggedIn) {
-  return  (
-    <>
-        <h1>Hello guest!</h1>
-        <button onClick={() => this.setState({ isLoggedIn: true  })} >
-        Login</button>
-    </>
-  )}
-  return (
-        <>
-          <h1>hello user </h1>
-          <button
-          onClick={() => this.setState({isLoggedIn: false})} >
-          LOGOUT </button>
-            <User
-                age={28}
-                isLoggedIn={this.state.isLoggedIn}
-                name='Bobby'
-            /> 
-        </>
-   )
+    const { isLoggedIn } = this.state
+    return (
+      <>
+        <h1>Hello {(isLoggedIn) ? 'USER!!' : 'Guest'}</h1>
+        <button
+          onClick={() => this.setState({ isLoggedIn: !isLoggedIn })}>
+          {(isLoggedIn) ? 'LOGOUT' : 'Sign In'}</button>
+          <Link to="/Todd">Todd</Link>
+          <Link to="/Becca">Becca</Link>
+      
+      </>
+    )
   }
+
+
+
+
 }
 export default Dummy 

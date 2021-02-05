@@ -1,16 +1,35 @@
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom"
+
 import Dummy from './components/dummy'
-import './App.css';
+import User from './components/user'
+import './App.css'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-       <Dummy />
-
-
+      <Router>
+          <Switch>
+            <Route path="/Todd">
+              <User name="Todd" age="45" isLoggedIn={true} />
+            </Route>
+            <Route path="/Becca">
+              <User name="Becca" age="28" isLoggedIn={true} />
+            </Route>
+        <Route path="/">
+              <Dummy />
+            </Route>
+          </Switch>
+        </Router>
       </header>
     </div>
   )
 }
 
 export default App;
+
+
